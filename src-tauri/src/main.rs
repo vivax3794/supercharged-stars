@@ -19,9 +19,9 @@ fn main() {
             let handle = app.handle();
 
             tauri::async_runtime::spawn(async move {
-                match handle.updater().unwrap().check().await {
+                match handle.updater().check().await {
                     Ok(update) => {
-                        update.download_and_install().await;
+                        update.download_and_install().await.unwrap();
                     }
 
                     Err(e) => {
