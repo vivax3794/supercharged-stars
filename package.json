@@ -12,6 +12,7 @@
   "dependencies": {
     "@tauri-apps/api": "latest",
     "naive-ui": "^2.31.0",
+    "sass": "^1.54.0",
     "vue": "^3.2.37"
   },
   "devDependencies": {
