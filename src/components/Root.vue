@@ -20,14 +20,13 @@ import { NButton, NLayout, NLayoutSider, NLayoutContent, useMessage } from "naiv
 
 import StarRendering from "./StarRender.vue";
 import { listen } from '@tauri-apps/api/event'
-import { messageLight } from "naive-ui/es/message/styles";
+import { UpdateStatus } from "@tauri-apps/api/updater";
 
 const stars = ref<Star[]>([]);
 const message = useMessage();
 
 listen('tauri://update-status', function (res) {
     console.log(res);
-    message.error(res.payload.error);
 })
 
 function load_stars_clicked() {
