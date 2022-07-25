@@ -1,5 +1,4 @@
 <template>
-    <h1>MORE CHANGES PLEASE FUCKING WORK!</h1>
     <n-layout has-sider>
         <n-layout-sider>
             <n-button @click="load_stars_clicked">Load Stars From Disk</n-button>

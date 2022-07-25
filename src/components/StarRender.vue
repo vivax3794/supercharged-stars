@@ -1,31 +1,38 @@
 <template>
-    <div id="background">
-        <div class="star" v-for="{ x, y, color } in stars" :style="{
-            top: y + 'px',
-            left: x + 'px',
-            backgroundColor: COLORS[color] ?? '#f73693',
-        }" />
-    </div>
+    <canvas ref="canvas" width="1000" height="510" />
 </template>
 
 <script lang="ts" setup>
+import { ref, watch, onMounted } from 'vue';
 import { Star, COLORS } from '../rust-wrapper';
 
-defineProps<{
+const canvas = ref<HTMLCanvasElement>();
+const context = ref<CanvasRenderingContext2D | null>(null);
+
+const props = defineProps<{
     stars: Star[]
 }>();
+
+onMounted(() => {
+    context.value = canvas.value?.getContext("2d") ?? null;
+})
+
+watch(props, (new_props) => {
+    if (context.value === null) return;
+    let ctx = context.value;
+
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0, 0, 1000, 510);
+
+    new_props.stars.forEach((star) => {
+        ctx.fillStyle = COLORS[star.color];
+        ctx.fillRect(star.x, star.y, 5, 5);
+    })
+
+})
+
 
 </script>
 
 <style lang="sass" scoped>
-#background
-    position: relative
-    background-color: black
-    width: 1005px
-    height: 515px
-
-.star
-    position: absolute
-    width: 5px
-    height: 5px
 </style>
