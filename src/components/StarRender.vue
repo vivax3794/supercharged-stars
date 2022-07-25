@@ -15,6 +15,9 @@ const props = defineProps<{
 
 onMounted(() => {
     context.value = canvas.value?.getContext("2d") ?? null;
+    if (context.value === null) return;
+    context.value.fillStyle = "#000";
+    context.value.fillRect(0, 0, 1000, 510);
 })
 
 watch(props, (new_props) => {
