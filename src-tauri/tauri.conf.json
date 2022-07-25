@@ -7,7 +7,7 @@
   },
   "package": {
     "productName": "supercharged-stars",
-    "version": "0.1.6"
+    "version": "0.1.7"
   },
   "tauri": {
     "allowlist": {
@@ -61,8 +61,7 @@
       "endpoints": [
         "https://raw.githubusercontent.com/vivax3794/supercharged-stars/master/update.json"
       ],
-      "dialog": true,
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDFCMjlFNTA1MUMxOTA4MzYKUldRMkNCa2NCZVVwR3hhMzlPQytudTJKMXlYMGZtTnQxZ3hRYUI1T0I2OGhOMzQ5NGRjRDVpdVgK"
+      "dialog": true
     },
     "windows": [
       {
