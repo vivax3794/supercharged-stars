@@ -1,0 +1,18 @@
+{
+  "version": "v0.1.2",
+  "notes": "Test version",
+  "platforms": {
+    "darwin-x86_64": {
+      "signature": "https://github.com/vivax3794/supercharged-stars/releases/download/v0.1.2/supercharged-stars.app.tar.gz.sig",
+      "url": "https://github.com/vivax3794/supercharged-stars/releases/download/v0.1.2/supercharged-stars.app.tar.gz"
+    },
+    "linux-x86_64": {
+      "signature": "https://github.com/vivax3794/supercharged-stars/releases/download/v0.1.2/supercharged-stars_0.1.2_amd64.AppImage.tar.gz.sig",
+      "url": "https://github.com/vivax3794/supercharged-stars/releases/download/v0.1.2/supercharged-stars_0.1.2_amd64.AppImage.tar.gz"
+    },
+    "windows-x86_64": {
+      "signature": "https://github.com/vivax3794/supercharged-stars/releases/download/v0.1.2/supercharged-stars_0.1.2_x64_en-US.msi.zip.sig",
+      "url": "https://github.com/vivax3794/supercharged-stars/releases/download/v0.1.2/supercharged-stars_0.1.2_x64_en-US.msi.zip"
+    }
+  }
+}
