@@ -59,7 +59,7 @@
     "updater": {
       "active": true,
       "endpoints": [
-        "https://dist.unlock.sh/v1/tauri/1af8be76-d631-4149-b7f3-b0d7fb13dba7/{{current_version}}"
+        "https://raw.githubusercontent.com/vivax3794/supercharged-stars/master/update.json"
       ],
       "dialog": true,
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDFCMjlFNTA1MUMxOTA4MzYKUldRMkNCa2NCZVVwR3hhMzlPQytudTJKMXlYMGZtTnQxZ3hRYUI1T0I2OGhOMzQ5NGRjRDVpdVgK"
