@@ -1,5 +1,4 @@
 import { invoke } from '@tauri-apps/api/tauri';
-console.log(invoke);
 
 export type Star = {
     x: number,

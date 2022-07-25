@@ -16,11 +16,19 @@
 import { ref } from "vue";
 import { Star, load_stars } from "../rust-wrapper";
 
-import { NButton, NLayout, NLayoutSider, NLayoutContent } from "naive-ui";
+import { NButton, NLayout, NLayoutSider, NLayoutContent, useMessage } from "naive-ui";
 
 import StarRendering from "./StarRender.vue";
+import { listen } from '@tauri-apps/api/event'
+import { messageLight } from "naive-ui/es/message/styles";
 
 const stars = ref<Star[]>([]);
+const message = useMessage();
+
+listen('tauri://update-status', function (res) {
+    console.log(res);
+    message.error(res.payload.error);
+})
 
 function load_stars_clicked() {
     load_stars()
