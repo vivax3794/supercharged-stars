@@ -3,15 +3,15 @@
   "notes": "Test version",
   "platforms": {
     "darwin-x86_64": {
-      "signature": "",
+      "signature": "DARWIN_SIG",
       "url": "https://github.com/vivax3794/supercharged-stars/releases/download/vVERSION/supercharged-stars.app.tar.gz"
     },
     "linux-x86_64": {
-      "signature": "",
+      "signature": "LINUX_SIG",
       "url": "https://github.com/vivax3794/supercharged-stars/releases/download/vVERSION/supercharged-stars_VERSION_amd64.AppImage.tar.gz"
     },
     "windows-x86_64": {
-      "signature": "",
+      "signature": "WINDOWS_SIG",
       "url": "https://github.com/vivax3794/supercharged-stars/releases/download/vVERSION/supercharged-stars_VERSION_x64_en-US.msi.zip"
     }
   }
