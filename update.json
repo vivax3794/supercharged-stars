@@ -1,6 +1,6 @@
 {
   "version": "v0.2.0",
-  "notes": "Test version",
+  "notes": "Major speedup in star rendering",
   "platforms": {
     "darwin-x86_64": {
       "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRMkNCa2NCZVVwRzRFcGtEUUFDSzlNREZoZUk4L2IvcG5uTmVGTHpqNWg3QVBMNlVhM0VucUR6TE0yRTJWakphMTc5UmIybDFZVjJyZnZUUWh6dC9EeWI1R1pCeTQ2OFFVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjU4NzI5NjYxCWZpbGU6c3VwZXJjaGFyZ2VkLXN0YXJzLmFwcC50YXIuZ3oKYjZWc0pnbTQ3c3NuUlBTeGFaZnVIbHh6bmFjNVIvdSthaG81SXhIZHJ2czdnR3lyZHFRbUhIeGx1RWJqK1licVlpSmpVRGJNQlN3S0ZVTU1ldlhrQnc9PQo=",
