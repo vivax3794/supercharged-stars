@@ -15,23 +15,6 @@ struct Star {
 fn main() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![load_stars])
-        .setup(|app| {
-            let handle = app.handle();
-
-            tauri::async_runtime::spawn(async move {
-                match handle.updater().check().await {
-                    Ok(update) => {
-                        update.download_and_install().await.unwrap();
-                    }
-
-                    Err(e) => {
-                        println!("ERROR: {}", e);
-                    }
-                }
-            });
-
-            Ok(())
-        })
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
