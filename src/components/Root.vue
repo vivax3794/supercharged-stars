@@ -19,19 +19,14 @@ import { NButton, NLayout, NLayoutSider, NLayoutContent, useMessage } from "naiv
 
 import StarRendering from "./StarRender.vue";
 import { listen } from '@tauri-apps/api/event'
-import { UpdateStatus } from "@tauri-apps/api/updater";
 
 const stars = ref<Star[]>([]);
 const message = useMessage();
 
-listen('tauri://update-status', function (res) {
-    console.log(res);
-})
-
 function load_stars_clicked() {
     load_stars()
         .then((new_stars) => stars.value = new_stars)
-        .catch((error) => { });
+        .catch((error) => message.error(error));
 }
 
 </script>
