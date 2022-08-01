@@ -19,7 +19,8 @@
                         <n-input v-model:value="jwt" placeholder="JWT token" />
                         <n-button @click="load_stars_clicked">Load Stars From Disk</n-button>
                         <n-button @click="save_stars_clicked">Save stars</n-button>
-                        <n-button @click="send_to_arcade_clicked()">Send to arcade</n-button>
+                        <n-button @click="send_to_arcade_clicked">Send to arcade</n-button>
+                        <n-button @click="load_image_clicked">Load Image</n-button>
                     </n-space>
                 </n-tab-pane>
             </n-tabs>
@@ -34,7 +35,7 @@
 
 <script lang="ts" setup>
 import { ref, computed } from "vue";
-import { Star, load_stars, save_stars, send_stars } from "../rust-wrapper";
+import { Star, load_stars, save_stars, send_stars, load_image_colors } from "../rust-wrapper";
 
 import { NSlider, NDropdown, NTabs, NTabPane, NInput, NButton, NLayout, NLayoutSider, NLayoutContent, useMessage, NSpace } from "naive-ui";
 
@@ -78,6 +79,15 @@ function save_stars_clicked(): void {
 function send_to_arcade_clicked(): void {
     send_stars(jwt.value, stars.value)
         .then(() => message.success("sent stars to matisse!"))
+        .catch(error_happend);
+}
+
+function load_image_clicked(): void {
+    load_image_colors()
+        .then((new_stars) => {
+            console.log(new_stars);
+            stars.value = new_stars
+        })
         .catch(error_happend);
 }
 

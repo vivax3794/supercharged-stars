@@ -1,5 +1,6 @@
 pub mod api;
 pub mod filesystem;
+pub mod image;
 
 use serde::{Deserialize, Serialize};
 

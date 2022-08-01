@@ -112,3 +112,15 @@ mod tests {
         assert_eq!(is_likely_old_format(&stars), true);
     }
 }
+
+pub fn load_image(window: tauri::Window) -> Result<std::path::PathBuf, String> {
+    use tauri::api::dialog::blocking as dialog;
+
+    let path = dialog::FileDialogBuilder::new()
+        .set_parent(&window)
+        .set_title("Stars to save")
+        .add_filter("Image", &["png", "jpeg", "bmp"])
+        .pick_file()
+        .ok_or("Error getting file path")?;
+    Ok(path)
+}

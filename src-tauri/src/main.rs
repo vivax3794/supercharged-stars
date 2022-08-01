@@ -9,6 +9,7 @@ fn main() {
             app::filesystem::load_stars,
             app::filesystem::save_stars,
             app::api::send_stars,
+            app::image::load_image_colors,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

@@ -7,31 +7,33 @@ export type Star = {
 }
 
 export const COLORS: string[] = [
-    "#f73693",
-    "#4392a0",
-    "#1172b2",
-    "#edd45a",
-    "#b403a8",
-    "#7e15af",
-    "#ba2362",
-    "#06aa19",
-    "#aaf96d",
-    "#2a8791",
-    "#5ad117",
-    "#bf8209",
-    "#099b88",
-    "#ac1804",
-    "#52ce61",
-    "#4dcc68",
-    "#9a43a5",
-    "#1250b5",
-    "#a0b709",
-    "#d0ed12",
-    "#8e1531",
-    "#2daeb5",
-    "#24ad38",
-    "#df33b0",
-    "#fce54e",
+    "#FFFFFF",
+    "#fc0202",
+    "#fc3c02",
+    "#fc7702",
+    "#fcb102",
+    "#fceb02",
+    "#d2fc02",
+    "#98fc02",
+    "#5efc02",
+    "#23fc02",
+    "#02fc1b",
+    "#02fc55",
+    "#02fc90",
+    "#02fcca",
+    "#02f4fc",
+    "#02b9fc",
+    "#007efc",
+    "#0043fc",
+    "#0008fc",
+    "#3200fc",
+    "#6d00fc",
+    "#a800fc",
+    "#e300fc",
+    "#fc00da",
+    "#fc009f",
+    "#fc0064",
+    "#fc002a"
 ]
 
 
@@ -45,4 +47,9 @@ export function save_stars(stars: Star[]): Promise<null> {
 
 export function send_stars(jwt: string, stars: Star[]): Promise<null> {
     return invoke("send_stars", { jwt: jwt, stars: stars });
+}
+
+export function load_image_colors(): Promise<Star[]> {
+    return invoke("load_image_colors");
+
 }
