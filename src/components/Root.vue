@@ -1,7 +1,12 @@
 <template>
     <n-layout has-sider>
-        <n-layout-sider>
-            <n-button @click="load_stars_clicked">Load Stars From Disk</n-button>
+        <n-layout-sider content-style="padding: 24px;">
+            <n-space>
+                <n-input v-model:value="jwt" placeholder="JWT token" />
+                <n-button @click="load_stars_clicked">Load Stars From Disk</n-button>
+                <n-button @click="save_stars_clicked">Save stars</n-button>
+                <n-button @click="send_to_arcade_clicked()">Send to arcade</n-button>
+            </n-space>
         </n-layout-sider>
         <n-layout>
             <n-layout-content>
@@ -13,20 +18,43 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { Star, load_stars } from "../rust-wrapper";
+import { Star, load_stars, save_stars, send_stars } from "../rust-wrapper";
 
-import { NButton, NLayout, NLayoutSider, NLayoutContent, useMessage } from "naive-ui";
+import { NInput, NButton, NLayout, NLayoutSider, NLayoutContent, useMessage, NSpace } from "naive-ui";
 
 import StarRendering from "./StarRender.vue";
-import { listen } from '@tauri-apps/api/event'
+
 
 const stars = ref<Star[]>([]);
+const jwt = ref("");
+
 const message = useMessage();
 
-function load_stars_clicked() {
+function error_happend(err: object): void {
+    console.error(err);
+    message.error(`${err}`);
+}
+
+function load_stars_clicked(): void {
     load_stars()
-        .then((new_stars) => stars.value = new_stars)
-        .catch((error) => message.error(error));
+        .then(([new_stars, note]) => {
+            console.log(new_stars);
+            stars.value = new_stars
+            if (note !== null) message.info(note)
+        })
+        .catch(error_happend);
+}
+
+function save_stars_clicked(): void {
+    save_stars(stars.value)
+        .then(() => message.success("stars saved to disk"))
+        .catch(error_happend);
+}
+
+function send_to_arcade_clicked(): void {
+    send_stars(jwt.value, stars.value)
+        .then(() => message.success("sent stars to matisse!"))
+        .catch(error_happend);
 }
 
 </script>

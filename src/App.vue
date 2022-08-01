@@ -1,9 +1,9 @@
 <template>
   <n-config-provider :theme="darkTheme">
     <n-global-style />
-    <NMessageProvider>
+    <n-message-provider>
       <Root />
-    </NMessageProvider>
+    </n-message-provider>
   </n-config-provider>
 </template>
 

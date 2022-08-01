@@ -18,6 +18,11 @@
         "message": false,
         "open": true,
         "save": true
+      },
+      "http": {
+        "all": true,
+        "request": true,
+        "scope": ["https://arcade-placement-tool.herokuapp.com/*"]
       }
     },
     "bundle": {

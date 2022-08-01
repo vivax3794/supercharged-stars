@@ -3,7 +3,7 @@ import { invoke } from '@tauri-apps/api/tauri';
 export type Star = {
     x: number,
     y: number,
-    color: number
+    currentStar: number
 }
 
 export const COLORS: string[] = [
@@ -35,6 +35,14 @@ export const COLORS: string[] = [
 ]
 
 
-export function load_stars(): Promise<Star[]> {
+export function load_stars(): Promise<[Star[], string | null]> {
     return invoke("load_stars");
+}
+
+export function save_stars(stars: Star[]): Promise<null> {
+    return invoke("save_stars", { stars: stars });
+}
+
+export function send_stars(jwt: string, stars: Star[]): Promise<null> {
+    return invoke("send_stars", { jwt: jwt, stars: stars });
 }
