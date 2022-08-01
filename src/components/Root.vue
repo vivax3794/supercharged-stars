@@ -4,11 +4,14 @@
             <n-tabs type="line" animated>
                 <n-tab-pane name="drawing" tab="Drawing">
                     <n-space vertical>
+                        <span :style="{ color: stars.length < 9000 ? 'white' : 'red' }">{{ stars.length }} / 9000</span>
                         <n-button @click="stars = []" type="warning">Clear</n-button>
                         <n-dropdown size="small" trigger="click" :options="currentStarOptions"
                             @select="(selected) => currentStar = selected">
                             <n-button>Select Star</n-button>
                         </n-dropdown>
+                        Symmetry amount:
+                        <n-slider v-model:value="symmetry_amount" :min="1" :max="10" :step="1" />
                     </n-space>
                 </n-tab-pane>
                 <n-tab-pane name="external" tab="Save/Load">
@@ -23,22 +26,23 @@
         </n-layout-sider>
         <n-layout>
             <n-layout-content>
-                <StarRendering v-model:stars="stars" :currentStar="currentStar" />
+                <StarRendering :stars="stars" @can_moved="draw" />
             </n-layout-content>
         </n-layout>
     </n-layout>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { Star, load_stars, save_stars, send_stars } from "../rust-wrapper";
 
-import { NDropdown, NTabs, NTabPane, NInput, NButton, NLayout, NLayoutSider, NLayoutContent, useMessage, NSpace } from "naive-ui";
+import { NSlider, NDropdown, NTabs, NTabPane, NInput, NButton, NLayout, NLayoutSider, NLayoutContent, useMessage, NSpace } from "naive-ui";
 
 import StarRendering from "./StarRender.vue";
 
-
 const stars = ref<Star[]>([]);
+const symmetry_amount = ref(1);
+
 const jwt = ref("");
 const currentStar = ref(0);
 
@@ -75,6 +79,36 @@ function send_to_arcade_clicked(): void {
     send_stars(jwt.value, stars.value)
         .then(() => message.success("sent stars to matisse!"))
         .catch(error_happend);
+}
+
+function draw(mouse_down: boolean, org_x: number, org_y: number): void {
+    if (mouse_down) {
+        create_symmetry(org_x, org_y).forEach(([x, y]) => {
+            stars.value.push({ x: x, y: y, currentStar: currentStar.value });
+        })
+    }
+
+}
+
+
+function create_symmetry(x: number, y: number): [number, number][] {
+    var ctrX = 500;
+    var ctrY = 250;
+    var relX = x - ctrX;
+    var relY = ctrY - y;
+    var dist = Math.hypot(relX, relY);
+    var angle = Math.atan2(relX, relY);  // Radians
+    var result: [number, number][] = [];
+    for (var i = 0; i < symmetry_amount.value; i++) {
+        var theta = angle + Math.PI * 2 / symmetry_amount.value * i;  // Radians
+        x = ctrX + Math.sin(theta) * dist;
+        y = ctrY - Math.cos(theta) * dist;
+        if (0 <= x && x <= 1000 && 0 <= y && y <= 500) {
+            result.push([x, y]);
+        }
+
+    }
+    return result;
 }
 
 </script>

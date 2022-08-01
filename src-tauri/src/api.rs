@@ -38,8 +38,6 @@ pub async fn send_stars(jwt: String, stars: Vec<Star>) -> Result<(), String> {
         ))
         .response_type(http::ResponseType::Text);
 
-    println!("{:#?}", request);
-
     let response = client
         .send(request)
         .await
