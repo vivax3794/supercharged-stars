@@ -51,6 +51,7 @@ fn k_means<T>(colors: &Vec<((f64, f64, f64), T)>) -> Vec<(&T, usize)> {
                 .into_iter()
                 .copied()
                 .reduce(|(x1, y1, z1), (x2, y2, z2)| (x1 + x2, y1 + y2, z1 + z2))
+                // If no colors fit into this cluster select a new random center
                 .unwrap_or_else(|| {
                     let (pos, _data) = colors.choose(&mut rng).unwrap();
                     *pos
@@ -119,7 +120,7 @@ pub fn load_image_colors(window: tauri::Window) -> Result<Vec<Star>, String> {
         .into_iter()
         .filter(|Star { x: _, y: _, color }| *color - 1 != most_common_color as u8 || alpha_removed)
         .map(|Star { x, y, color }| Star {
-            x: x / scale,
+            x: x / scale + 500.0 - image.width() as f32 / 2.0 / scale,
             y: y / scale,
             color,
         })

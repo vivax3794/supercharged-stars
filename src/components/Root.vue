@@ -12,6 +12,7 @@
                         </n-dropdown>
                         Symmetry amount:
                         <n-slider v-model:value="symmetry_amount" :min="1" :max="10" :step="1" />
+                        <n-button @click="y_level_color">Rainbow colors!</n-button>
                     </n-space>
                 </n-tab-pane>
                 <n-tab-pane name="external" tab="Save/Load">
@@ -98,6 +99,10 @@ function draw(mouse_down: boolean, org_x: number, org_y: number): void {
         })
     }
 
+}
+
+function y_level_color(): void {
+    stars.value = stars.value.map((value) => ({ x: value.x, y: value.y, currentStar: Math.floor(value.y / 500 * 24) + 1 }));
 }
 
 
