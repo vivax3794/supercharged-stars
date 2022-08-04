@@ -51,7 +51,10 @@ fn k_means<T>(colors: &Vec<((f64, f64, f64), T)>) -> Vec<(&T, usize)> {
                 .into_iter()
                 .copied()
                 .reduce(|(x1, y1, z1), (x2, y2, z2)| (x1 + x2, y1 + y2, z1 + z2))
-                .unwrap_or((0.0, 0.0, 0.0));
+                .unwrap_or_else(|| {
+                    let (pos, _data) = colors.choose(&mut rng).unwrap();
+                    *pos
+                });
             cluster_centers[index] = (pos.0 / len, pos.1 / len, pos.2 / len);
         }
     }
@@ -80,6 +83,9 @@ pub fn load_image_colors(window: tauri::Window) -> Result<Vec<Star>, String> {
     let mut scale: f32 = 0.0;
     let mut stars: Vec<Star> = Vec::with_capacity((image.width() * image.height()) as usize);
 
+    let mut color_count: [u32; 34] = [0; 34];
+    let mut alpha_removed = false;
+
     for (&(x, y, alpha), color) in k_means(
         &image
             .enumerate_pixels()
@@ -89,8 +95,11 @@ pub fn load_image_colors(window: tauri::Window) -> Result<Vec<Star>, String> {
             .collect(),
     ) {
         if alpha == 0 {
+            alpha_removed = true;
             continue;
         }
+
+        color_count[color] += 1;
 
         let x = x as f32;
         let y = y as f32;
@@ -101,8 +110,14 @@ pub fn load_image_colors(window: tauri::Window) -> Result<Vec<Star>, String> {
         scale = scale.max(x / 1000.0).max(y / 500.0);
     }
 
+    let (most_common_color, _) = color_count
+        .into_iter()
+        .enumerate()
+        .max_by_key(|&(_index, amount)| amount)
+        .unwrap();
     let stars = stars
         .into_iter()
+        .filter(|Star { x: _, y: _, color }| *color - 1 != most_common_color as u8 || alpha_removed)
         .map(|Star { x, y, color }| Star {
             x: x / scale,
             y: y / scale,
