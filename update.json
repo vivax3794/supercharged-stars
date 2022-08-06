@@ -1,18 +1,18 @@
 {
-  "version": "v0.2.4",
-  "notes": "Test version",
+  "version": "v0.2.5",
+  "notes": "Images!",
   "platforms": {
     "darwin-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRMkNCa2NCZVVwRzNvS1QrdTdwNkkzeTVKWG8wOVU1ZTJGbjVlK3lTcXJsc2EwSFNEc205RDROdU9XejV4cmdRakVnVWNqTmg4dUNBNnlLTWtoQXZxM0pzR3l5aitldGdZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjU5NjM1NTA0CWZpbGU6c3VwZXJjaGFyZ2VkLXN0YXJzLmFwcC50YXIuZ3oKdzhaUmNhei9HdmVMZThKUWZDdVpVM3dQeTIvU3lIcUJqRVhTczl6SVRWVitldi85ajBBRnQrSHpveVVvNmQwQmgyZkZKamI1TCt2TnhsMG5qandyQmc9PQo=",
-      "url": "https://github.com/vivax3794/supercharged-stars/releases/download/v0.2.4/supercharged-stars.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRMkNCa2NCZVVwRzgraEoxcFBrTFkza3V6V2RLTTdVcmlpVGxjWXZ3Z0tiTFMwMm1nczMrR1U5NkR1Y0FsL1R1NWl1KytNS3ZTb3E3aCtQZVNxcndrQWdJK1ZXNWVudFFJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjU5NzQ4MTAwCWZpbGU6c3VwZXJjaGFyZ2VkLXN0YXJzLmFwcC50YXIuZ3oKTnpjbUw4WHFmL0kzUnRCRXV3VVRqUGtOKzhqT25TaUVUM3JJUWt6WFdKR0RQcVFNYVF0K1ZLT3RHcVlKeUFQcm5HRWhXRUNxNmE5VDBlZGhxZFBZQUE9PQo=",
+      "url": "https://github.com/vivax3794/supercharged-stars/releases/download/v0.2.5/supercharged-stars.app.tar.gz"
     },
     "linux-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRMkNCa2NCZVVwR3hBN241ajlJZVVycUNiU2hia1k1ZEk0SlVkYmluRDRiMDgvUThPWWN5SjhHa093TFBlcjNVRFhnYnhaL3pxWWEvVkpBd3prNUZ6dGVEMWwzdkVqS2dVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjU5NjM1Mjc5CWZpbGU6c3VwZXJjaGFyZ2VkLXN0YXJzXzAuMi40X2FtZDY0LkFwcEltYWdlLnRhci5negpyVnBKSmovVlJtQlJIZE9KcHc2MXFnZ2xXMXJrelNOOHJCNUJTTlliVnBPTXdycGs5dTB6ZU5FWDVYUFUzK3F6N1NSZ2Urd1UyOFN2WG9mdHZaY2NCUT09Cg==",
-      "url": "https://github.com/vivax3794/supercharged-stars/releases/download/v0.2.4/supercharged-stars_0.2.4_amd64.AppImage.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRMkNCa2NCZVVwRzE2V0Z4eGlYNEE5YnNvaHF0Sy91VGlCalpIK1laZFdwbmtKZ0RVZTdvWjZWOXUwWFYrU1RyNnJWWUFGeFJYdm9oUzdiOWI3K0dPcnlGdGVkd0FZcmdzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjU5NzQ4MTA5CWZpbGU6c3VwZXJjaGFyZ2VkLXN0YXJzXzAuMi41X2FtZDY0LkFwcEltYWdlLnRhci5negpQcjM5cTNPK09zaWMyeUJXZzZHVGI5dFRmeGIrT3BNSERtbStkcGREeWd2d2orazdWNy81OTZaYWhBR0NGSlp1K0VYTU1jTitsZlBUeUJEY3R1VTZBdz09Cg==",
+      "url": "https://github.com/vivax3794/supercharged-stars/releases/download/v0.2.5/supercharged-stars_0.2.5_amd64.AppImage.tar.gz"
     },
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRMkNCa2NCZVVwRzJ1dGJZaTBiQnhMMzNZS3ZIYWtRaFd5bmJBL1NIYjMxWXhkOHBIMFVKYWppUFZoc3ltOXBFTDRFY3NmWkQrcXphU3oyUXI5and3SVQ1K1VkM1dZc2d3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjU5NjM1NDUyCWZpbGU6c3VwZXJjaGFyZ2VkLXN0YXJzXzAuMi40X3g2NF9lbi1VUy5tc2kuemlwCk9UNEh2czRnczBIcEpJRkxaVytlNnB5RXpoeG5CKzV3Sm1QdTVhY21aeFMybW5iL1UyR3dxMGtEeEIwaFR1a0p6d08xYUptcDJNWmtHN1d1SlVndENRPT0K",
-      "url": "https://github.com/vivax3794/supercharged-stars/releases/download/v0.2.4/supercharged-stars_0.2.4_x64_en-US.msi.zip"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRMkNCa2NCZVVwRzl6UjgrazhFem1FRzdrZW94NnlZWncwaDIxTDV3dG9MMGx6UmtiVVYzVVZLLzlzdzl1aFRLQ0lGblBSUjMxdlRFbFJTeXZISjFUQTEyQWxXZmRWV2c0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjU5NzQ4MTUxCWZpbGU6c3VwZXJjaGFyZ2VkLXN0YXJzXzAuMi41X3g2NF9lbi1VUy5tc2kuemlwClRZR0hEaEgvY01jWXBlc0c0aERkODM3TGpCOUt2aG5sQkFDV0d5dWhsSTlaSXNBV3hsQnIrVXpCQ0RrUzlPOXVBYnBQU2FzNkljNjlxaUtJM0FvWENBPT0K",
+      "url": "https://github.com/vivax3794/supercharged-stars/releases/download/v0.2.5/supercharged-stars_0.2.5_x64_en-US.msi.zip"
     }
   }
 }
