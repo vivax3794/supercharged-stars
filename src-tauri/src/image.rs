@@ -84,7 +84,7 @@ pub fn load_image_colors(window: tauri::Window) -> Result<Vec<Star>, String> {
     let mut scale: f32 = 0.0;
     let mut stars: Vec<Star> = Vec::with_capacity((image.width() * image.height()) as usize);
 
-    let mut color_count: [u32; 34] = [0; 34];
+    let mut color_count: [u32; 24] = [0; 24];
     let mut alpha_removed = false;
 
     for (&(x, y, alpha), color) in k_means(
