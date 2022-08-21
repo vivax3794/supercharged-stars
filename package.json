@@ -10,11 +10,13 @@
     "check-rs": "cd src-tauri && cargo clippy",
     "test-rs": "cd src-tauri && cargo nextest run",
     "check-ts": "vue-tsc --noEmit",
-    "test-ts": "vitest --run"
+    "test-ts": "vitest --run",
+    "verify": "yarn check-rs && yarn test-rs && yarn check-ts && yarn test-ts"
   },
   "dependencies": {
     "@tauri-apps/api": "latest",
     "naive-ui": "^2.31.0",
+    "pinia": "^2.0.20",
     "sass": "^1.54.0",
     "vue": "^3.2.37"
   },

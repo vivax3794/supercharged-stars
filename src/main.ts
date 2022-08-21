@@ -1,10 +1,14 @@
 
-import { checkUpdate, installUpdate } from '@tauri-apps/api/updater'
-import { relaunch } from '@tauri-apps/api/process'
-
 import { createApp } from 'vue'
+import { createPinia } from "pinia"
+
 import App from './App.vue'
 
 
+const pinia = createPinia()
+const app = createApp(App)
 
-createApp(App).mount('#app')
+app.use(pinia)
+
+
+app.mount('#app')

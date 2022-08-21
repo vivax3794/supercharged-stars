@@ -51,5 +51,4 @@ export function send_stars(jwt: string, stars: Star[]): Promise<null> {
 
 export function load_image_colors(): Promise<Star[]> {
     return invoke("load_image_colors");
-
 }

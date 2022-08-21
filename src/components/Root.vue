@@ -4,8 +4,9 @@
             <n-tabs type="line" animated>
                 <n-tab-pane name="drawing" tab="Drawing">
                     <n-space vertical>
-                        <span :style="{ color: stars.length < 9000 ? 'white' : 'red' }">{{ stars.length }} / 9000</span>
-                        <n-button @click="stars = []" type="warning">Clear</n-button>
+                        <span :style="{ color: starStore.length < 9000 ? 'white' : 'red' }">{{ starStore.length }} /
+                            9000</span>
+                        <n-button @click="starStore.data = []" type="warning">Clear</n-button>
                         <n-dropdown size="small" trigger="click" :options="currentStarOptions"
                             @select="(selected) => currentStar = selected">
                             <n-button>Select Star</n-button>
@@ -28,21 +29,22 @@
         </n-layout-sider>
         <n-layout>
             <n-layout-content>
-                <StarRendering :stars="stars" @can_moved="draw" />
+                <StarRendering @can_moved="draw" />
             </n-layout-content>
         </n-layout>
     </n-layout>
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from "vue";
-import { Star, load_stars, save_stars, send_stars, load_image_colors } from "../rust-wrapper";
+import { ref } from "vue";
+import { load_stars, save_stars, send_stars, load_image_colors } from "../rust-wrapper";
 
 import { NSlider, NDropdown, NTabs, NTabPane, NInput, NButton, NLayout, NLayoutSider, NLayoutContent, useMessage, NSpace } from "naive-ui";
 
 import StarRendering from "./StarRender.vue";
+import { useStarsStore } from "../stores/stars";
 
-const stars = ref<Star[]>([]);
+const starStore = useStarsStore();
 const symmetry_amount = ref(1);
 
 const jwt = ref("");
@@ -65,20 +67,20 @@ function load_stars_clicked(): void {
     load_stars()
         .then(([new_stars, note]) => {
             console.log(new_stars);
-            stars.value = new_stars
+            starStore.data = new_stars
             if (note !== null) message.info(note)
         })
         .catch(error_happend);
 }
 
 function save_stars_clicked(): void {
-    save_stars(stars.value)
+    save_stars(starStore.data)
         .then(() => message.success("stars saved to disk"))
         .catch(error_happend);
 }
 
 function send_to_arcade_clicked(): void {
-    send_stars(jwt.value, stars.value)
+    send_stars(jwt.value, starStore.data)
         .then(() => message.success("sent stars to matisse!"))
         .catch(error_happend);
 }
@@ -87,7 +89,7 @@ function load_image_clicked(): void {
     load_image_colors()
         .then((new_stars) => {
             console.log(new_stars);
-            stars.value = new_stars
+            starStore.data = new_stars
         })
         .catch(error_happend);
 }
@@ -95,16 +97,11 @@ function load_image_clicked(): void {
 function draw(mouse_down: boolean, org_x: number, org_y: number): void {
     if (mouse_down) {
         create_symmetry(org_x, org_y).forEach(([x, y]) => {
-            stars.value.push({ x: x, y: y, currentStar: currentStar.value });
+            starStore.data.push({ x: x, y: y, currentStar: currentStar.value });
         })
     }
 
 }
-
-function y_level_color(): void {
-    stars.value = stars.value.map((value) => ({ x: value.x, y: value.y, currentStar: Math.floor(value.y / 500 * 24) + 1 }));
-}
-
 
 function create_symmetry(x: number, y: number): [number, number][] {
     var ctrX = 500;
@@ -126,4 +123,7 @@ function create_symmetry(x: number, y: number): [number, number][] {
     return result;
 }
 
+function y_level_color(): void {
+    starStore.data = starStore.data.map((value) => ({ x: value.x, y: value.y, currentStar: Math.floor(value.y / 500 * 24) + 1 }));
+}
 </script>

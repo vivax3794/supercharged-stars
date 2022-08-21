@@ -26,6 +26,9 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+      
+      - name: Install Mold
+        uses: rui314/setup-mold@v1
 
       - name: Rust cache
         uses: Swatinem/rust-cache@v2

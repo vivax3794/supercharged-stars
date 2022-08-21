@@ -25,3 +25,25 @@ pub struct Star {
     #[serde(rename = "currentStar")]
     pub color: u8,
 }
+
+#[cfg(test)]
+mod result_tests {
+    use super::*;
+
+    #[test]
+    fn prefix_error_returns_ok() {
+        let res: Result<i32, String> = Ok(1);
+        assert_eq!(res.prefix_error("something"), Ok(1))
+    }
+
+    #[test]
+    fn prefix_error_returns_err() {
+        let res: Result<i32, &str> = Err("went wrong");
+        let new = res.prefix_error("oh no");
+
+        assert!(new.is_err());
+        let inner = new.unwrap_err();
+        assert!(inner.contains("went wrong"));
+        assert!(inner.contains("oh no"));
+    }
+}
